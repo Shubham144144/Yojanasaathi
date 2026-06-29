@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>पात्रता जांचें — योजना साथी</title>
+  <meta name="description" content="अपनी जानकारी भरें और जानें कि आप किन सरकारी योजनाओं के पात्र हैं।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --saffron:       #E8651A;
+      --saffron-light: #FDF0E8;
+      --saffron-mid:   #f0884a;
+      --green:         #138808;
+      --green-light:   #E8F5E9;
+      --navy:          #1A237E;
+      --ink:           #1C1C1E;
+      --muted:         #6B7280;
+      --line:          #E5E7EB;
+      --white:         #FFFFFF;
+      --bg:            #F9F7F4;
+      --card:          #FFFFFF;
+      --radius:        14px;
+      --shadow:        0 2px 16px rgba(0,0,0,0.07);
+      --error:         #DC2626;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .tricolor {
+      height: 4px;
+      background: linear-gradient(to right, #FF9933 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%);
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      width: 34px; height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .header-title {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    /* PROGRESS */
+    .progress-wrap {
+      background: var(--white);
+      padding: 14px 20px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .progress-step-label {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .progress-pct {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--saffron);
+    }
+
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--line);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--saffron), var(--saffron-mid));
+      border-radius: 100px;
+      transition: width 0.4s ease;
+    }
+
+    /* STEP DOTS */
+    .step-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 0 0;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--line);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dot.active {
+      background: var(--saffron);
+      transform: scale(1.3);
+    }
+
+    .dot.done { background: var(--green); }
+
+    /* MAIN FORM AREA */
+    main {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 20px 100px;
+    }
+
+    /* STEP PANEL */
+    .step-panel {
+      display: none;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .step-panel.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-icon {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+
+    .step-heading {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 22px;
+      color: var(--ink);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .step-subheading {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* FIELD */
+    .field { margin-bottom: 20px; }
+
+    .field label {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .field label .required { color: var(--error); margin-left: 2px; }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      color: var(--ink);
+      background: var(--white);
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--saffron);
+      box-shadow: 0 0 0 3px rgba(232,101,26,0.1);
+    }
+
+    .field .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+      font-family: 'Tiro Devanagari Hindi', serif;
+    }
+
+    .field .error-msg {
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 5px;
+      display: none;
+      font-family: 'Tiro Devanagari Hindi', serif;
+    }
+
+    .field.has-error input,
+    .field.has-error select { border-color: var(--error); }
+
+    .field.has-error .error-msg { display: block; }
+
+    /* OPTION CARDS — big tap targets for rural users */
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .option-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .option-grid.cols-1 { grid-template-columns: 1fr; }
+
+    .opt-card {
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: var(--white);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .opt-card:active { transform: scale(0.97); }
+
+    .opt-card.selected {
+      border-color: var(--saffron);
+      background: var(--saffron-light);
+    }
+
+    .opt-icon { font-size: 24px; display: block; margin-bottom: 6px; }
+
+    .opt-label {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      padding: 14px 20px;
+      display: flex;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .btn-back {
+      flex: 0 0 auto;
+      padding: 14px 20px;
+      border: 1.5px solid var(--line);
+      border-radius: 100px;
+      background: var(--white);
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 15px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-back:hover { border-color: var(--saffron); color: var(--saffron); }
+
+    .btn-next {
+      flex: 1;
+      padding: 14px;
+      background: var(--saffron);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(232,101,26,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-next:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(232,101,26,0.4);
+    }
+
+    .btn-next:active { transform: scale(0.98); }
+
+    /* RESULTS PAGE */
+    .results-wrap { display: none; }
+
+    .results-hero {
+      text-align: center;
+      padding: 32px 20px 24px;
+      background: linear-gradient(135deg, #1A237E 0%, #283593 100%);
+      color: var(--white);
+    }
+
+    .results-count {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .results-title {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .results-sub {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 13px;
+      opacity: 0.65;
+    }
+
+    .results-body {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    .category-group { margin-bottom: 28px; }
+
+    .cat-heading {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .scheme-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .scheme-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .scheme-emoji { font-size: 28px; flex-shrink: 0; }
+
+    .scheme-name {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .scheme-ministry {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .scheme-benefit {
+      background: var(--green-light);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .scheme-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .difficulty {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: 'Tiro Devanagari Hindi', serif;
+    }
+
+    .apply-btn {
+      display: inline-block;
+      background: var(--saffron);
+      color: var(--white);
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+
+    .apply-btn:hover { transform: scale(1.03); }
+
+    .recheck-btn {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1.5px solid var(--saffron);
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--saffron);
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .privacy-note {
+      text-align: center;
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 20px;
+      padding: 12px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+
+    /* SELECT WRAPPER */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      font-size: 14px;
+    }
+
+    @media (max-width: 360px) {
+      .option-grid { grid-template-columns: 1fr 1fr; }
+      .option-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="tricolor"></div>
+
+<header>
+  <a href="index.html" class="back-btn">←</a>
+  <div class="header-title">पात्रता जांचें</div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-meta">
+    <span class="progress-step-label" id="stepLabel">चरण 1 / 4</span>
+    <span class="progress-pct" id="stepPct">25%</span>
+  </div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progressFill" style="width:25%"></div>
+  </div>
+  <div class="step-dots">
+    <div class="dot active" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <div class="dot" id="dot4"></div>
+  </div>
+</div>
+
+<!-- FORM STEPS -->
+<main id="formMain">
+
+  <!-- STEP 1: Personal Profile -->
+  <div class="step-panel active" id="step1">
+    <div class="step-icon">👤</div>
+    <h2 class="step-heading">व्यक्तिगत जानकारी</h2>
+    <p class="step-subheading">यहाँ कोई नाम, आधार या फोन नंबर नहीं माँगा जाएगा। पूरी तरह सुरक्षित।</p>
+
+    <div class="field" id="f-age">
+      <label>आपकी उम्र (वर्ष) <span class="required">*</span></label>
+      <input type="number" id="age" placeholder="जैसे: 35" min="1" max="100" inputmode="numeric" />
+      <div class="error-msg">कृपया अपनी सही उम्र भरें।</div>
+    </div>
+
+    <div class="field" id="f-gender">
+      <label>लिंग <span class="required">*</span></label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="gender" data-value="male">
+          <span class="opt-icon">👨</span>
+          <div class="opt-label">पुरुष</div>
+        </div>
+        <div class="opt-card" data-field="gender" data-value="female">
+          <span class="opt-icon">👩</span>
+          <div class="opt-label">महिला</div>
+        </div>
+        <div class="opt-card" data-field="gender" data-value="other">
+          <span class="opt-icon">🧑</span>
+          <div class="opt-label">अन्य</div>
+        </div>
+      </div>
+      <div class="error-msg">कृपया लिंग चुनें।</div>
+    </div>
+
+    <div class="field" id="f-state">
+      <label>राज्य <span class="required">*</span></label>
+      <div class="select-wrap">
+        <select id="state">
+          <option value="">— राज्य चुनें —</option>
+          <option>उत्तर प्रदेश</option><option>महाराष्ट्र</option><option>बिहार</option>
+          <option>मध्य प्रदेश</option><option>राजस्थान</option><option>पश्चिम बंगाल</option>
+          <option>तमिलनाडु</option><option>कर्नाटक</option><option>गुजरात</option>
+          <option>आंध्र प्रदेश</option><option>तेलंगाना</option><option>ओडिशा</option>
+          <option>केरल</option><option>झारखंड</option><option>असम</option>
+          <option>पंजाब</option><option>छत्तीसगढ़</option><option>हरियाणा</option>
+          <option>उत्तराखंड</option><option>हिमाचल प्रदेश</option><option>जम्मू और कश्मीर</option>
+          <option>त्रिपुरा</option><option>मेघालय</option><option>मणिपुर</option>
+          <option>नागालैंड</option><option>गोवा</option><option>अरुणाचल प्रदेश</option>
+          <option>मिज़ोरम</option><option>सिक्किम</option><option>दिल्ली</option>
+        </select>
+      </div>
+      <div class="error-msg">कृपया अपना राज्य चुनें।</div>
+    </div>
+
+    <div class="field" id="f-category">
+      <label>जाति वर्ग <span class="required">*</span></label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="category" data-value="general">
+          <span class="opt-icon">🟡</span>
+          <div class="opt-label">सामान्य (General)</div>
+        </div>
+        <div class="opt-card" data-field="category" data-value="obc">
+          <span class="opt-icon">🟠</span>
+          <div class="opt-label">OBC</div>
+        </div>
+        <div class="opt-card" data-field="category" data-value="sc">
+          <span class="opt-icon">🔵</span>
+          <div class="opt-label">SC</div>
+        </div>
+        <div class="opt-card" data-field="category" data-value="st">
+          <span class="opt-icon">🟢</span>
+          <div class="opt-label">ST</div>
+        </div>
+      </div>
+      <div class="error-msg">कृपया अपना जाति वर्ग चुनें।</div>
+    </div>
+
+    <div class="field" id="f-disability">
+      <label>क्या आप दिव्यांग हैं?</label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="disability" data-value="no">
+          <span class="opt-icon">✅</span>
+          <div class="opt-label">नहीं</div>
+        </div>
+        <div class="opt-card" data-field="disability" data-value="yes">
+          <span class="opt-icon">♿</span>
+          <div class="opt-label">हाँ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Economic Profile -->
+  <div class="step-panel" id="step2">
+    <div class="step-icon">💰</div>
+    <h2 class="step-heading">आर्थिक जानकारी</h2>
+    <p class="step-subheading">आपकी आय और आर्थिक स्थिति के आधार पर योजनाएं मिलती हैं।</p>
+
+    <div class="field" id="f-income">
+      <label>परिवार की मासिक आय (₹) <span class="required">*</span></label>
+      <div class="option-grid cols-1">
+        <div class="opt-card" data-field="income" data-value="0-5000">
+          <div class="opt-label">₹5,000 से कम</div>
+        </div>
+        <div class="opt-card" data-field="income" data-value="5000-10000">
+          <div class="opt-label">₹5,000 – ₹10,000</div>
+        </div>
+        <div class="opt-card" data-field="income" data-value="10000-25000">
+          <div class="opt-label">₹10,000 – ₹25,000</div>
+        </div>
+        <div class="opt-card" data-field="income" data-value="25000-50000">
+          <div class="opt-label">₹25,000 – ₹50,000</div>
+        </div>
+        <div class="opt-card" data-field="income" data-value="50000+">
+          <div class="opt-label">₹50,000 से अधिक</div>
+        </div>
+      </div>
+      <div class="error-msg">कृपया आय सीमा चुनें।</div>
+    </div>
+
+    <div class="field" id="f-bpl">
+      <label>क्या आपके पास BPL कार्ड है?</label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="bpl" data-value="no">
+          <span class="opt-icon">❌</span>
+          <div class="opt-label">नहीं</div>
+        </div>
+        <div class="opt-card" data-field="bpl" data-value="yes">
+          <span class="opt-icon">✅</span>
+          <div class="opt-label">हाँ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" id="f-ration">
+      <label>राशन कार्ड का प्रकार</label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="ration" data-value="none">
+          <span class="opt-icon">🚫</span>
+          <div class="opt-label">नहीं है</div>
+        </div>
+        <div class="opt-card" data-field="ration" data-value="aay">
+          <span class="opt-icon">🟡</span>
+          <div class="opt-label">अंत्योदय (AAY)</div>
+        </div>
+        <div class="opt-card" data-field="ration" data-value="phh">
+          <span class="opt-icon">🟠</span>
+          <div class="opt-label">PHH</div>
+        </div>
+        <div class="opt-card" data-field="ration" data-value="nphh">
+          <span class="opt-icon">🔵</span>
+          <div class="opt-label">NPHH</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" id="f-land">
+      <label>क्या आपके पास खेती की ज़मीन है?</label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="land" data-value="no">
+          <span class="opt-icon">🏙️</span>
+          <div class="opt-label">नहीं</div>
+        </div>
+        <div class="opt-card" data-field="land" data-value="yes-small">
+          <span class="opt-icon">🌱</span>
+          <div class="opt-label">हाँ (2 हे. से कम)</div>
+        </div>
+        <div class="opt-card" data-field="land" data-value="yes-large">
+          <span class="opt-icon">🌾</span>
+          <div class="opt-label">हाँ (2 हे. से अधिक)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" id="f-bank">
+      <label>क्या आपका बैंक खाता है?</label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="bank" data-value="no">
+          <span class="opt-icon">❌</span>
+          <div class="opt-label">नहीं</div>
+        </div>
+        <div class="opt-card" data-field="bank" data-value="yes">
+          <span class="opt-icon">🏦</span>
+          <div class="opt-label">हाँ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Occupation & Education -->
+  <div class="step-panel"

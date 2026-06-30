@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>बेटी बचाओ बेटी पढ़ाओ — पात्रता, लाभ और जानकारी | योजना साथी</title>
+  <meta name="description" content="बेटी बचाओ बेटी पढ़ाओ योजना से बालिकाओं की शिक्षा और सुरक्षा को बढ़ावा। जानें योजना की पूरी जानकारी।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --saffron: #E8651A; --saffron-light: #FDF0E8; --green: #138808; --green-light: #E8F5E9; --navy: #1A237E; --ink: #1C1C1E; --muted: #6B7280; --line: #E5E7EB; --white: #FFFFFF; --bg: #F9F7F4; --radius: 14px; --shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .tricolor { height: 4px; background: linear-gradient(to right, #FF9933 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%); }
+    header { background: var(--white); border-bottom: 1px solid var(--line); padding: 0 20px; height: 56px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 100; }
+    .back-btn { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--ink); text-decoration: none; flex-shrink: 0; }
+    .header-title { font-family: 'Tiro Devanagari Hindi', serif; font-size: 15px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    main { max-width: 640px; margin: 0 auto; padding: 0 0 60px; }
+    .scheme-hero { background: linear-gradient(135deg, var(--navy) 0%, #283593 100%); color: var(--white); padding: 28px 20px 24px; text-align: center; }
+    .scheme-hero-emoji { font-size: 44px; margin-bottom: 10px; }
+    .scheme-hero-title { font-family: 'Tiro Devanagari Hindi', serif; font-size: 22px; line-height: 1.35; margin-bottom: 8px; }
+    .scheme-hero-ministry { font-size: 12px; opacity: 0.7; letter-spacing: 0.03em; }
+    .benefit-banner { background: var(--green-light); border: 1px solid #C8E6C9; margin: 20px 20px 0; border-radius: var(--radius); padding: 16px; text-align: center; }
+    .benefit-amount { font-size: 24px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+    .benefit-label { font-family: 'Tiro Devanagari Hindi', serif; font-size: 13px; color: var(--green); }
+    .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 20px 0; }
+    .fact-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 12px; text-align: center; }
+    .fact-label { font-size: 11px; color: var(--muted); font-family: 'Tiro Devanagari Hindi', serif; margin-bottom: 4px; }
+    .fact-value { font-family: 'Tiro Devanagari Hindi', serif; font-size: 14px; font-weight: 600; color: var(--ink); }
+    .section { padding: 28px 20px 0; }
+    .section-title { font-family: 'Tiro Devanagari Hindi', serif; font-size: 19px; color: var(--ink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .info-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .info-card p { font-family: 'Tiro Devanagari Hindi', serif; font-size: 14.5px; line-height: 1.7; color: var(--ink); margin-bottom: 12px; }
+    .info-card p:last-child { margin-bottom: 0; }
+    .check-list { list-style: none; }
+    .check-list li { font-family: 'Tiro Devanagari Hindi', serif; font-size: 14.5px; line-height: 1.6; color: var(--ink); padding: 10px 0; border-bottom: 1px solid var(--bg); display: flex; gap: 10px; align-items: flex-start; }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li .icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+    .apply-cta { margin: 24px 20px 0; background: var(--saffron); border-radius: var(--radius); padding: 22px; text-align: center; box-shadow: 0 4px 20px rgba(232,101,26,0.3); }
+    .apply-cta-title { font-family: 'Tiro Devanagari Hindi', serif; font-size: 17px; color: var(--white); margin-bottom: 14px; }
+    .apply-cta-btn { display: inline-block; background: var(--white); color: var(--saffron); font-family: 'Tiro Devanagari Hindi', serif; font-size: 15px; font-weight: 700; padding: 13px 28px; border-radius: 100px; text-decoration: none; }
+    .apply-cta-note { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 10px; font-family: 'Tiro Devanagari Hindi', serif; }
+    .disclaimer-box { margin: 20px 20px 0; background: #FFF8E1; border: 1px solid #FFE082; border-radius: 10px; padding: 14px; font-family: 'Tiro Devanagari Hindi', serif; font-size: 12.5px; color: #8D6E00; line-height: 1.6; }
+    .related-link { display: block; text-align: center; margin: 24px 20px 0; padding: 14px; border: 1.5px solid var(--saffron); border-radius: 100px; color: var(--saffron); font-family: 'Tiro Devanagari Hindi', serif; font-size: 15px; font-weight: 600; text-decoration: none; }
+    footer { padding: 24px 20px; text-align: center; border-top: 1px solid var(--line); background: var(--white); margin-top: 30px; }
+    .footer-copy { font-size: 11px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="tricolor"></div>
+<header><a href="index.html" class="back-btn">←</a><div class="header-title">बेटी बचाओ बेटी पढ़ाओ</div></header>
+<main>
+  <div class="scheme-hero">
+    <div class="scheme-hero-emoji">👩‍🎓</div>
+    <h1 class="scheme-hero-title">बेटी बचाओ बेटी पढ़ाओ</h1>
+    <div class="scheme-hero-ministry">महिला एवं बाल विकास मंत्रालय, भारत सरकार</div>
+  </div>
+  <div class="benefit-banner">
+    <div class="benefit-amount">जागरूकता + सहायता</div>
+    <div class="benefit-label">बालिकाओं की शिक्षा और सुरक्षा के लिए</div>
+  </div>
+  <div class="quick-facts">
+    <div class="fact-card"><div class="fact-label">किसके लिए</div><div class="fact-value">बालिकाओं वाले परिवार</div></div>
+    <div class="fact-card"><div class="fact-label">आवेदन शुल्क</div><div class="fact-value">मुफ़्त</div></div>
+    <div class="fact-card"><div class="fact-label">किस स्तर पर</div><div class="fact-value">ज़िला / ब्लॉक स्तर</div></div>
+    <div class="fact-card"><div class="fact-label">जुड़ी योजनाएं</div><div class="fact-value">सुकन्या समृद्धि आदि</div></div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">📋 योजना क्या है?</h2>
+    <div class="info-card">
+      <p>बेटी बचाओ बेटी पढ़ाओ एक राष्ट्रीय जागरूकता अभियान है, जिसका उद्देश्य बेटियों के प्रति समाज की सोच बदलना, उनकी शिक्षा को बढ़ावा देना और कन्या भ्रूण हत्या जैसी कुरीतियों को रोकना है।</p>
+      <p>यह सीधे पैसे देने वाली योजना नहीं है, बल्कि जागरूकता और सहयोगी योजनाओं (जैसे सुकन्या समृद्धि, छात्रवृत्ति) के ज़रिए बेटियों को आगे बढ़ाने का अभियान है।</p>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">✅ इससे क्या लाभ मिलते हैं?</h2>
+    <div class="info-card">
+      <ul class="check-list">
+        <li><span class="icon">✅</span> बेटियों की शिक्षा के लिए जागरूकता कार्यक्रम</li>
+        <li><span class="icon">✅</span> कन्या भ्रूण हत्या के खिलाफ कानूनी सहायता और जागरूकता</li>
+        <li><span class="icon">✅</span> स्कूल में बालिकाओं के लिए विशेष सुविधाएं (शौचालय, सुरक्षा)</li>
+        <li><span class="icon">✅</span> सुकन्या समृद्धि योजना से जुड़ाव — बेटी के नाम बचत खाता</li>
+      </ul>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">🚀 कैसे जुड़ें?</h2>
+    <div class="info-card">
+      <p>इस अभियान का सीधा कोई फॉर्म नहीं है — यह एक जागरूकता कार्यक्रम है। लेकिन इससे जुड़े सीधे लाभ के लिए:</p>
+      <p>1. बेटी के लिए सुकन्या समृद्धि खाता खुलवाएं (डाकघर/बैंक में)<br>
+      2. बेटी की शिक्षा के लिए स्कॉलरशिप योजनाओं में आवेदन करें<br>
+      3. अपने ज़िले के महिला एवं बाल विकास कार्यालय से जागरूकता कार्यक्रमों की जानकारी लें</p>
+    </div>
+  </div>
+  <div class="apply-cta">
+    <div class="apply-cta-title">और जानकारी चाहिए?</div>
+    <a href="https://wcd.nic.in/bbbp-schemes" target="_blank" rel="noopener" class="apply-cta-btn">आधिकारिक वेबसाइट पर जाएं →</a>
+    <div class="apply-cta-note">यह आपको wcd.nic.in पर ले जाएगा</div>
+  </div>
+  <div class="disclaimer-box">ℹ️ योजना साथी एक स्वतंत्र जानकारी प्लेटफ़ॉर्म है, सरकार से संबद्ध नहीं। नियम और लाभ समय-समय पर बदल सकते हैं — आवेदन से पहले आधिकारिक वेबसाइट पर अवश्य जांच लें।</div>
+  <a href="eligibility.html" class="related-link">अपनी अन्य योजनाएं भी जांचें →</a>
+</main>
+<footer><div class="footer-copy">© 2026 Yojana Saathi. सभी अधिकार सुरक्षित।</div></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Test</title>
+<style>
+  body { font-family: sans-serif; padding: 40px; }
+  .box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .box.selected {
+    border-color: orange;
+    background: #fdf0e8;
+  }
+</style>
+</head>
+<body>
+  <h2>Tap the box below</h2>
+  <div class="box" id="testBox">Tap me</div>
+  <p id="status">Status: not tapped yet</p>
+
+<script>
+  document.getElementById('testBox').addEventListener('click', function() {
+    this.classList.toggle('selected');
+    document.getElementById('status').textContent = 'Status: TAPPED! It works!';
+  });
+</script>
+</body>
+</html>
+

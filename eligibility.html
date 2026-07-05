@@ -1093,6 +1093,87 @@
       check: a => ['daily-wage','farmer','unemployed'].includes(a.occupation) && ['0-5000','5000-10000','10000-25000'].includes(a.income),
       category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
     },
+    // ── STATE SPECIFIC SCHEMES ──
+    {
+      name: "मुख्यमंत्री कन्या सुमंगला योजना (UP)",
+      emoji: "👧",
+      ministry: "UP सरकार",
+      benefit: "बेटी के जन्म से पढ़ाई तक ₹15,000 की सहायता — 6 किस्तों में",
+      difficulty: "मध्यम",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && a.girlchild === 'yes' && ['0-5000','5000-10000','10000-25000'].includes(a.income),
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "UP वृद्धावस्था पेंशन (₹1,000/माह)",
+      emoji: "👴",
+      ministry: "UP सरकार",
+      benefit: "₹1,000 प्रति माह — केंद्रीय पेंशन से अधिक UP में",
+      difficulty: "मध्यम",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && parseInt(a.age) >= 60 && (a.bpl === 'yes' || ['0-5000','5000-10000'].includes(a.income)),
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री कन्या उत्थान योजना (Bihar)",
+      emoji: "👩‍🎓",
+      ministry: "बिहार सरकार",
+      benefit: "बेटी के जन्म से स्नातक तक ₹50,000 की सहायता",
+      difficulty: "मध्यम",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार' && a.gender === 'female',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री उद्यमी योजना (Bihar)",
+      emoji: "💼",
+      ministry: "बिहार सरकार",
+      benefit: "SC/ST/OBC युवाओं को ₹10 लाख — 50% अनुदान + 50% लोन",
+      difficulty: "मध्यम",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार' && ['sc','st','obc'].includes(a.category) && ['student','unemployed'].includes(a.occupation),
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "लाडली बहना योजना (MP)",
+      emoji: "👩",
+      ministry: "मध्य प्रदेश सरकार",
+      benefit: "₹1,250 प्रति माह — 21-60 वर्ष की विवाहित महिलाओं को",
+      difficulty: "आसान",
+      url: "madhya-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'मध्य प्रदेश' && a.gender === 'female' && a.married === 'yes' && parseInt(a.age) >= 21 && parseInt(a.age) <= 60,
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "MP मुख्यमंत्री किसान कल्याण योजना",
+      emoji: "🌾",
+      ministry: "मध्य प्रदेश सरकार",
+      benefit: "PM Kisan के अलावा ₹4,000 अतिरिक्त — कुल ₹10,000/वर्ष",
+      difficulty: "आसान",
+      url: "madhya-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'मध्य प्रदेश' && a.occupation === 'farmer' && (a.land === 'yes-small' || a.land === 'yes-large'),
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री चिरंजीवी स्वास्थ्य बीमा (Rajasthan)",
+      emoji: "🏥",
+      ministry: "राजस्थान सरकार",
+      benefit: "₹25 लाख तक मुफ़्त इलाज — राजस्थान के सभी परिवारों के लिए",
+      difficulty: "आसान",
+      url: "rajasthan-sarkari-yojana.html",
+      check: a => a.state === 'राजस्थान',
+      category: "🏥 स्वास्थ्य योजनाएं"
+    },
+    {
+      name: "लाडकी बहीण योजना (Maharashtra)",
+      emoji: "👩",
+      ministry: "महाराष्ट्र सरकार",
+      benefit: "₹1,500 प्रति माह — 21-65 वर्ष की महिलाओं को",
+      difficulty: "आसान",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && a.gender === 'female' && parseInt(a.age) >= 21 && parseInt(a.age) <= 65,
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
   ];
 
   // ── OPT CARD SELECTION ──

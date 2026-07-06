@@ -1176,6 +1176,22 @@
     },
   ];
 
+  // ── AUTO SELECT STATE FROM URL PARAMETER ──
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const stateParam = params.get('state');
+    if (stateParam) {
+      const stateSelect = document.getElementById('state');
+      for (let i = 0; i < stateSelect.options.length; i++) {
+        if (stateSelect.options[i].value === stateParam) {
+          stateSelect.value = stateParam;
+          answers.state = stateParam;
+          break;
+        }
+      }
+    }
+  });
+
   // ── OPT CARD SELECTION ──
   document.querySelectorAll('.opt-card').forEach(card => {
     card.addEventListener('click', () => {

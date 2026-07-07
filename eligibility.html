@@ -1201,8 +1201,33 @@
       answers[field] = card.dataset.value;
       const fieldEl = document.getElementById('f-' + field);
       if (fieldEl) fieldEl.classList.remove('has-error');
+
+      if (field === 'married') updateFamilyFieldsVisibility();
     });
   });
+
+  // ── CONDITIONAL FIELDS ──
+  // अविवाहित चुनने पर "बच्चों की संख्या" प्रश्न छुपाएं और उसका उत्तर रीसेट करें
+  function updateFamilyFieldsVisibility() {
+    const childrenField = document.getElementById('f-children');
+    if (!childrenField) return;
+    if (answers.married === 'no') {
+      childrenField.style.display = 'none';
+      delete answers.children;
+      document.querySelectorAll('.opt-card[data-field="children"]').forEach(c => c.classList.remove('selected'));
+    } else {
+      childrenField.style.display = '';
+    }
+  }
+
+  // पिछले चरण पर वापस जाने पर पहले से चुने गए विकल्प फिर से हाइलाइट करें
+  function restoreSelections(step) {
+    document.querySelectorAll('#step' + step + ' .opt-card').forEach(card => {
+      const field = card.dataset.field;
+      if (answers[field] === card.dataset.value) card.classList.add('selected');
+    });
+    if (step === 4) updateFamilyFieldsVisibility();
+  }
 
   // ── VALIDATION ──
   function validateStep(step) {
@@ -1235,6 +1260,7 @@
     document.getElementById('step' + currentStep).classList.remove('active');
     currentStep = n;
     document.getElementById('step' + currentStep).classList.add('active');
+    restoreSelections(currentStep);
 
     const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
     document.getElementById('progressFill').style.width = pct + '%';

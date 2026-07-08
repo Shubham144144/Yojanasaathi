@@ -1174,6 +1174,396 @@
       check: a => a.state === 'महाराष्ट्र' && a.gender === 'female' && parseInt(a.age) >= 21 && parseInt(a.age) <= 65,
       category: "👩 महिला एवं बाल योजनाएं"
     },
+    {
+      name: "UP निराश्रित महिला पेंशन",
+      emoji: "🌸",
+      ministry: "UP सरकार",
+      benefit: "₹1,000 प्रति माह — विधवा/परित्यक्ता महिलाओं को",
+      difficulty: "मध्यम",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && a.gender === 'female' && a.married === 'widow',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "UP मुख्यमंत्री युवा स्वरोज़गार योजना",
+      emoji: "💼",
+      ministry: "UP सरकार",
+      benefit: "₹25 लाख तक लोन (उद्योग) / ₹10 लाख (सेवा क्षेत्र) — सब्सिडी सहित",
+      difficulty: "मध्यम",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && ['unemployed','self-employed','student'].includes(a.occupation) && parseInt(a.age) >= 18 && parseInt(a.age) <= 40,
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "UP दिव्यांगजन पेंशन",
+      emoji: "♿",
+      ministry: "UP सरकार",
+      benefit: "₹1,000 प्रति माह — 40% या अधिक दिव्यांगता वाले नागरिकों को",
+      difficulty: "मध्यम",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && a.disability === 'yes',
+      category: "♿ दिव्यांग कल्याण योजनाएं"
+    },
+    {
+      name: "UP किसान कर्ज़ माफी योजना",
+      emoji: "🌾",
+      ministry: "UP सरकार",
+      benefit: "छोटे व सीमांत किसानों का फसल ऋण माफ़",
+      difficulty: "कठिन",
+      url: "uttar-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'उत्तर प्रदेश' && a.occupation === 'farmer' && a.land === 'yes-small',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री साइकिल योजना (Bihar)",
+      emoji: "🚲",
+      ministry: "बिहार सरकार",
+      benefit: "स्कूल जाने वाले छात्र/छात्राओं को साइकिल हेतु ₹3,000",
+      difficulty: "आसान",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार' && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "बिहार वृद्धजन पेंशन योजना",
+      emoji: "👴",
+      ministry: "बिहार सरकार",
+      benefit: "₹400-500 प्रति माह — 60 वर्ष से अधिक नागरिकों को",
+      difficulty: "मध्यम",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार' && (a.senior === 'yes' || parseInt(a.age) >= 60),
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "बिहार कृषि इनपुट अनुदान",
+      emoji: "🌾",
+      ministry: "बिहार सरकार",
+      benefit: "फसल क्षति पर बीज व खाद हेतु सीधी अनुदान राशि",
+      difficulty: "आसान",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "बिहार हर घर बिजली योजना",
+      emoji: "💡",
+      ministry: "बिहार सरकार",
+      benefit: "हर ग्रामीण घर तक मुफ़्त बिजली कनेक्शन",
+      difficulty: "आसान",
+      url: "bihar-sarkari-yojana.html",
+      check: a => a.state === 'बिहार',
+      category: "🏠 आवास एवं बुनियादी सुविधाएं"
+    },
+    {
+      name: "लाडली लक्ष्मी योजना (MP)",
+      emoji: "👧",
+      ministry: "मध्य प्रदेश सरकार",
+      benefit: "बेटी के जन्म से शादी तक ₹1,43,000 की सहायता — किस्तों में",
+      difficulty: "मध्यम",
+      url: "madhya-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'मध्य प्रदेश' && a.girlchild === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "MP मुख्यमंत्री उद्यम क्रांति योजना",
+      emoji: "💼",
+      ministry: "मध्य प्रदेश सरकार",
+      benefit: "₹1-50 लाख तक लोन — युवाओं के लिए बिना गारंटी",
+      difficulty: "मध्यम",
+      url: "madhya-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'मध्य प्रदेश' && ['unemployed','self-employed','student'].includes(a.occupation) && parseInt(a.age) >= 18 && parseInt(a.age) <= 40,
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "MP वृद्धावस्था पेंशन",
+      emoji: "👴",
+      ministry: "मध्य प्रदेश सरकार",
+      benefit: "₹600 प्रति माह — 60 वर्ष से अधिक BPL नागरिकों को",
+      difficulty: "मध्यम",
+      url: "madhya-pradesh-sarkari-yojana.html",
+      check: a => a.state === 'मध्य प्रदेश' && parseInt(a.age) >= 60 && a.bpl === 'yes',
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "इंदिरा गांधी मातृत्व पोषण योजना (Rajasthan)",
+      emoji: "🤰",
+      ministry: "राजस्थान सरकार",
+      benefit: "गर्भवती महिलाओं को ₹6,000 — 5 किस्तों में",
+      difficulty: "आसान",
+      url: "rajasthan-sarkari-yojana.html",
+      check: a => a.state === 'राजस्थान' && a.pregnant === 'yes',
+      category: "🤰 स्वास्थ्य एवं मातृत्व योजनाएं"
+    },
+    {
+      name: "राजस्थान मुफ़्त पाठ्यपुस्तक योजना",
+      emoji: "📚",
+      ministry: "राजस्थान सरकार",
+      benefit: "1-12वीं तक सभी सरकारी स्कूल छात्रों को मुफ़्त किताबें",
+      difficulty: "आसान",
+      url: "rajasthan-sarkari-yojana.html",
+      check: a => a.state === 'राजस्थान' && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "राजस्थान वृद्धावस्था पेंशन",
+      emoji: "👴",
+      ministry: "राजस्थान सरकार",
+      benefit: "₹750-1,000 प्रति माह — 55+ महिला और 58+ पुरुष को",
+      difficulty: "मध्यम",
+      url: "rajasthan-sarkari-yojana.html",
+      check: a => a.state === 'राजस्थान' && ((a.gender === 'female' && parseInt(a.age) >= 55) || (a.gender === 'male' && parseInt(a.age) >= 58)),
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "राजस्थान बेरोज़गारी भत्ता",
+      emoji: "🔍",
+      ministry: "राजस्थान सरकार",
+      benefit: "शिक्षित बेरोज़गार युवाओं को ₹3,000-3,500 प्रति माह",
+      difficulty: "मध्यम",
+      url: "rajasthan-sarkari-yojana.html",
+      check: a => a.state === 'राजस्थान' && a.occupation === 'unemployed' && parseInt(a.age) >= 21 && parseInt(a.age) <= 35,
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "माझी कन्या भाग्यश्री योजना (Maharashtra)",
+      emoji: "👧",
+      ministry: "महाराष्ट्र सरकार",
+      benefit: "बेटी के नाम ₹50,000 FD — BPL परिवारों के लिए",
+      difficulty: "मध्यम",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && a.girlchild === 'yes' && a.bpl === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "महाराष्ट्र शेतकरी योजना",
+      emoji: "🌾",
+      ministry: "महाराष्ट्र सरकार",
+      benefit: "किसानों को फसल नुकसान पर मुआवज़ा और बीमा सहायता",
+      difficulty: "आसान",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "महाराष्ट्र स्वाधार योजना",
+      emoji: "🎓",
+      ministry: "महाराष्ट्र सरकार",
+      benefit: "SC/NB छात्रों को ₹51,000 सालाना — हॉस्टल खर्च के लिए",
+      difficulty: "मध्यम",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && ['sc','st'].includes(a.category) && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "परिवार पहचान पत्र (PPP) (Haryana)",
+      emoji: "🪪",
+      ministry: "हरियाणा सरकार",
+      benefit: "सभी हरियाणा योजनाओं के लिए ज़रूरी एकीकृत पहचान — मुफ़्त बनवाएं",
+      difficulty: "आसान",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा',
+      category: "🪪 दस्तावेज़ एवं पहचान योजनाएं"
+    },
+    {
+      name: "वृद्धावस्था सम्मान भत्ता (Haryana)",
+      emoji: "👴",
+      ministry: "हरियाणा सरकार",
+      benefit: "₹3,000 प्रति माह — 60 वर्ष से अधिक नागरिकों को",
+      difficulty: "मध्यम",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && parseInt(a.age) >= 60,
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री विवाह शगुन योजना (Haryana)",
+      emoji: "💍",
+      ministry: "हरियाणा सरकार",
+      benefit: "गरीब परिवारों की बेटियों की शादी हेतु ₹51,000-71,000",
+      difficulty: "मध्यम",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && a.gender === 'female' && a.bpl === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री दाल भात योजना (Haryana)",
+      emoji: "🍛",
+      ministry: "हरियाणा सरकार",
+      benefit: "₹10-15 में पौष्टिक भोजन — दिहाड़ी मज़दूरों के लिए",
+      difficulty: "आसान",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && ['daily-wage','unemployed'].includes(a.occupation),
+      category: "🍛 खाद्य सुरक्षा योजनाएं"
+    },
+    {
+      name: "हरियाणा किसान कल्याण योजना",
+      emoji: "🌾",
+      ministry: "हरियाणा सरकार",
+      benefit: "किसानों को फसल बीमा, MSP और अतिरिक्त सहायता",
+      difficulty: "आसान",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "बेटी बचाओ बेटी पढ़ाओ (Haryana)",
+      emoji: "👧",
+      ministry: "हरियाणा सरकार",
+      benefit: "बालिका शिक्षा व सुरक्षा हेतु जागरूकता व सहायता योजना",
+      difficulty: "आसान",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && a.girlchild === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "वहाली दीकरी योजना (Gujarat)",
+      emoji: "👧",
+      ministry: "गुजरात सरकार",
+      benefit: "बेटी के जन्म से पढ़ाई तक ₹1,10,000 की सहायता",
+      difficulty: "मध्यम",
+      url: "gujarat-sarkari-yojana.html",
+      check: a => a.state === 'गुजरात' && a.girlchild === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "वृद्ध सहाय योजना (Gujarat)",
+      emoji: "👴",
+      ministry: "गुजरात सरकार",
+      benefit: "₹1,000-1,250 प्रति माह — 60 वर्ष से अधिक BPL नागरिकों को",
+      difficulty: "मध्यम",
+      url: "gujarat-sarkari-yojana.html",
+      check: a => a.state === 'गुजरात' && parseInt(a.age) >= 60 && a.bpl === 'yes',
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री युवा स्वावलंबन योजना (Gujarat)",
+      emoji: "🎓",
+      ministry: "गुजरात सरकार",
+      benefit: "उच्च शिक्षा हेतु स्कॉलरशिप व लोन सहायता",
+      difficulty: "मध्यम",
+      url: "gujarat-sarkari-yojana.html",
+      check: a => a.state === 'गुजरात' && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री लघु उद्योग योजना (Gujarat)",
+      emoji: "🏭",
+      ministry: "गुजरात सरकार",
+      benefit: "छोटे उद्योग शुरू करने हेतु सब्सिडी युक्त लोन",
+      difficulty: "मध्यम",
+      url: "gujarat-sarkari-yojana.html",
+      check: a => a.state === 'गुजरात' && ['self-employed','unemployed'].includes(a.occupation),
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "गंगा स्वरूपा आर्थिक सहाय योजना (Gujarat)",
+      emoji: "🌸",
+      ministry: "गुजरात सरकार",
+      benefit: "विधवा महिलाओं को ₹1,250 प्रति माह आर्थिक सहायता",
+      difficulty: "मध्यम",
+      url: "gujarat-sarkari-yojana.html",
+      check: a => a.state === 'गुजरात' && a.gender === 'female' && a.married === 'widow',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "लक्ष्मी भंडार योजना (West Bengal)",
+      emoji: "👩",
+      ministry: "पश्चिम बंगाल सरकार",
+      benefit: "₹1,000-1,200 प्रति माह — सभी पात्र महिलाओं को",
+      difficulty: "आसान",
+      url: "west-bengal-sarkari-yojana.html",
+      check: a => a.state === 'पश्चिम बंगाल' && a.gender === 'female' && parseInt(a.age) >= 25,
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "कन्याश्री प्रकल्प (West Bengal)",
+      emoji: "👧",
+      ministry: "पश्चिम बंगाल सरकार",
+      benefit: "स्कूली छात्राओं को ₹1,000/वर्ष व स्नातक पर ₹25,000",
+      difficulty: "आसान",
+      url: "west-bengal-sarkari-yojana.html",
+      check: a => a.state === 'पश्चिम बंगाल' && a.gender === 'female' && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "स्वास्थ्य साथी योजना (West Bengal)",
+      emoji: "🏥",
+      ministry: "पश्चिम बंगाल सरकार",
+      benefit: "₹5 लाख तक मुफ़्त इलाज — सभी परिवारों के लिए",
+      difficulty: "आसान",
+      url: "west-bengal-sarkari-yojana.html",
+      check: a => a.state === 'पश्चिम बंगाल',
+      category: "🏥 स्वास्थ्य योजनाएं"
+    },
+    {
+      name: "जय बांग्ला पेंशन योजना (West Bengal)",
+      emoji: "👴",
+      ministry: "पश्चिम बंगाल सरकार",
+      benefit: "₹1,000 प्रति माह — वृद्धावस्था/विधवा/दिव्यांग पेंशन",
+      difficulty: "मध्यम",
+      url: "west-bengal-sarkari-yojana.html",
+      check: a => a.state === 'पश्चिम बंगाल' && (parseInt(a.age) >= 60 || a.married === 'widow' || a.disability === 'yes'),
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "कृषक बंधु योजना (West Bengal)",
+      emoji: "🌾",
+      ministry: "पश्चिम बंगाल सरकार",
+      benefit: "किसानों को ₹4,000-10,000/वर्ष प्रत्यक्ष सहायता",
+      difficulty: "आसान",
+      url: "west-bengal-sarkari-yojana.html",
+      check: a => a.state === 'पश्चिम बंगाल' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "बुढ़ापा पेंशन योजना (Punjab)",
+      emoji: "👴",
+      ministry: "पंजाब सरकार",
+      benefit: "₹1,500 प्रति माह — 58+ महिला और 65+ पुरुष को",
+      difficulty: "मध्यम",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && ((a.gender === 'female' && parseInt(a.age) >= 58) || (a.gender === 'male' && parseInt(a.age) >= 65)),
+      category: "👴 वरिष्ठ नागरिक योजनाएं"
+    },
+    {
+      name: "पंजाब मुख्यमंत्री वजीफा योजना",
+      emoji: "🎓",
+      ministry: "पंजाब सरकार",
+      benefit: "SC/OBC छात्रों को स्कॉलरशिप सहायता",
+      difficulty: "आसान",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && ['sc','obc'].includes(a.category) && a.occupation === 'student',
+      category: "📚 शिक्षा योजनाएं"
+    },
+    {
+      name: "शगुन योजना (Punjab)",
+      emoji: "💍",
+      ministry: "पंजाब सरकार",
+      benefit: "गरीब परिवारों की बेटियों की शादी हेतु ₹51,000",
+      difficulty: "मध्यम",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && a.gender === 'female' && a.bpl === 'yes',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "पंजाब फसल विविधीकरण योजना",
+      emoji: "🌾",
+      ministry: "पंजाब सरकार",
+      benefit: "धान की जगह वैकल्पिक फसल उगाने पर प्रोत्साहन राशि",
+      difficulty: "मध्यम",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "दिव्यांग पेंशन योजना (Punjab)",
+      emoji: "♿",
+      ministry: "पंजाब सरकार",
+      benefit: "₹1,500 प्रति माह — दिव्यांग नागरिकों को",
+      difficulty: "मध्यम",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && a.disability === 'yes',
+      category: "♿ दिव्यांग कल्याण योजनाएं"
+    },
   ];
 
   // ── AUTO SELECT STATE FROM URL PARAMETER ──

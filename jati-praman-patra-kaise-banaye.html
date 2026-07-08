@@ -44,7 +44,7 @@
     .doc-list li:last-child { border-bottom: none; }
     .doc-list li .icon { flex-shrink: 0; font-size: 16px; }
     .state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-    .state-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+    .state-card { display: block; text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
     .state-name { font-family: 'Tiro Devanagari Hindi', serif; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
     .state-url { font-size: 11px; color: var(--saffron); }
     .alert-box { background: #FFF8E1; border: 1px solid #FFE082; border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
@@ -125,12 +125,15 @@
 
     <h2 class="section-title">राज्यवार ऑनलाइन पोर्टल</h2>
     <div class="state-grid">
-      <div class="state-card"><div class="state-name">उत्तर प्रदेश</div><div class="state-url">edistrict.up.gov.in</div></div>
-      <div class="state-card"><div class="state-name">बिहार</div><div class="state-url">serviceonline.bihar.gov.in</div></div>
-      <div class="state-card"><div class="state-name">मध्य प्रदेश</div><div class="state-url">mpedistrict.gov.in</div></div>
-      <div class="state-card"><div class="state-name">राजस्थान</div><div class="state-url">emitra.rajasthan.gov.in</div></div>
-      <div class="state-card"><div class="state-name">महाराष्ट्र</div><div class="state-url">aaplesarkar.mahaonline.gov.in</div></div>
-      <div class="state-card"><div class="state-name">हरियाणा</div><div class="state-url">saralharyana.gov.in</div></div>
+      <a class="state-card" href="https://edistrict.up.gov.in/" target="_blank" rel="noopener"><div class="state-name">उत्तर प्रदेश</div><div class="state-url">edistrict.up.gov.in</div></a>
+      <a class="state-card" href="https://serviceonline.bihar.gov.in/" target="_blank" rel="noopener"><div class="state-name">बिहार</div><div class="state-url">serviceonline.bihar.gov.in</div></a>
+      <a class="state-card" href="https://mpedistrict.gov.in/" target="_blank" rel="noopener"><div class="state-name">मध्य प्रदेश</div><div class="state-url">mpedistrict.gov.in</div></a>
+      <a class="state-card" href="https://emitra.rajasthan.gov.in/" target="_blank" rel="noopener"><div class="state-name">राजस्थान</div><div class="state-url">emitra.rajasthan.gov.in</div></a>
+      <a class="state-card" href="https://aaplesarkar.mahaonline.gov.in/" target="_blank" rel="noopener"><div class="state-name">महाराष्ट्र</div><div class="state-url">aaplesarkar.mahaonline.gov.in</div></a>
+      <a class="state-card" href="https://saralharyana.gov.in/" target="_blank" rel="noopener"><div class="state-name">हरियाणा</div><div class="state-url">saralharyana.gov.in</div></a>
+      <a class="state-card" href="https://digitalgujarat.gov.in/" target="_blank" rel="noopener"><div class="state-name">गुजरात</div><div class="state-url">digitalgujarat.gov.in</div></a>
+      <a class="state-card" href="https://edistrict.wb.gov.in/" target="_blank" rel="noopener"><div class="state-name">पश्चिम बंगाल</div><div class="state-url">edistrict.wb.gov.in</div></a>
+      <a class="state-card" href="https://edistrict.punjabgovt.gov.in/" target="_blank" rel="noopener"><div class="state-name">पंजाब</div><div class="state-url">edistrict.punjabgovt.gov.in</div></a>
     </div>
 
     <div class="alert-box">

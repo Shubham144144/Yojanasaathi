@@ -385,6 +385,17 @@
       .cats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-number { font-size: 18px; }
     }
+    .cat-accordion { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 4px; }
+    .cat-accordion summary { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; cursor: pointer; list-style: none; }
+    .cat-accordion summary::-webkit-details-marker { display: none; }
+    .accordion-head { display: flex; align-items: center; gap: 10px; }
+    .accordion-head .section-label { margin-bottom: 2px; }
+    .accordion-head-text .section-label { margin: 0 0 2px; }
+    .accordion-head-text .section-title { margin: 0; }
+    .accordion-count { font-size: 11px; color: var(--saffron); background: var(--saffron-light); padding: 3px 10px; border-radius: 100px; font-weight: 600; flex-shrink: 0; }
+    .accordion-arrow { color: var(--muted); font-size: 12px; transition: transform 0.2s; flex-shrink: 0; margin-left: 10px; }
+    .cat-accordion[open] .accordion-arrow { transform: rotate(180deg); }
+    .cat-accordion .steps, .cat-accordion .cats-grid { border-top: 1px solid var(--line); padding: 14px 18px 18px; }
   </style>
 </head>
 
@@ -509,8 +520,17 @@
 
   <!-- POPULAR GUIDES -->
   <section class="section" style="padding-top:0;">
-    <div class="section-label">लोकप्रिय गाइड</div>
-    <h2 class="section-title">अक्सर पूछे जाने वाले सवाल</h2>
+    <details class="cat-accordion">
+      <summary>
+        <div class="accordion-head-text">
+          <div class="section-label">लोकप्रिय गाइड</div>
+          <h2 class="section-title" style="margin-bottom:0;">दस्तावेज़ एवं प्रक्रिया गाइड</h2>
+        </div>
+        <div style="display:flex;align-items:center;">
+          <span class="accordion-count">14</span>
+          <span class="accordion-arrow">▼</span>
+        </div>
+      </summary>
     <div class="steps">
       <a href="pm-kisan-status-check.html" style="text-decoration:none;">
         <div class="step">
@@ -657,6 +677,7 @@
         </div>
       </a>
     </div>
+    </details>
   </section>
 
   <!-- CATEGORY PAGES -->
@@ -693,8 +714,17 @@
 
   <!-- STATE PAGES -->
   <section class="cats-section" style="padding-top:0;">
-    <div class="section-label">राज्यवार योजनाएं</div>
-    <h2 class="section-title">अपने राज्य की योजनाएं देखें</h2>
+    <details class="cat-accordion">
+      <summary>
+        <div class="accordion-head-text">
+          <div class="section-label">राज्यवार योजनाएं</div>
+          <h2 class="section-title" style="margin-bottom:0;">अपने राज्य की योजनाएं देखें</h2>
+        </div>
+        <div style="display:flex;align-items:center;">
+          <span class="accordion-count">9</span>
+          <span class="accordion-arrow">▼</span>
+        </div>
+      </summary>
     <div class="cats-grid">
       <a href="uttar-pradesh-sarkari-yojana.html" class="cat-card">
         <span class="cat-icon">🏛️</span>
@@ -737,6 +767,7 @@
         <div class="cat-name">अन्य राज्य →</div>
       </a>
     </div>
+    </details>
   </section>
 
   <!-- TRUST -->

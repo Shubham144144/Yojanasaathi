@@ -1566,7 +1566,7 @@
     },
   ];
 
-  // ── AUTO SELECT STATE FROM URL PARAMETER ──
+  // ── AUTO SELECT STATE / OCCUPATION / GENDER FROM URL PARAMETER ──
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const stateParam = params.get('state');
@@ -1580,6 +1580,17 @@
         }
       }
     }
+
+    ['occupation', 'gender'].forEach(field => {
+      const val = params.get(field);
+      if (!val) return;
+      const card = document.querySelector(`.opt-card[data-field="${field}"][data-value="${val}"]`);
+      if (card) {
+        document.querySelectorAll(`.opt-card[data-field="${field}"]`).forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        answers[field] = val;
+      }
+    });
   });
 
   // ── OPT CARD SELECTION ──

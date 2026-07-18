@@ -1643,14 +1643,28 @@
       if (!answers.gender)   setError('f-gender');   else clearError('f-gender');
       if (!document.getElementById('state').value) { setError('f-state'); } else { answers.state = document.getElementById('state').value; clearError('f-state'); }
       if (!answers.category) setError('f-category'); else clearError('f-category');
+      if (!answers.disability) setError('f-disability'); else clearError('f-disability');
     }
 
     if (step === 2) {
       if (!answers.income) setError('f-income'); else clearError('f-income');
+      if (!answers.bpl) setError('f-bpl'); else clearError('f-bpl');
+      if (!answers.ration) setError('f-ration'); else clearError('f-ration');
     }
 
     if (step === 3) {
+      if (!answers.land) setError('f-land'); else clearError('f-land');
+      if (!answers.bank) setError('f-bank'); else clearError('f-bank');
       if (!answers.occupation) setError('f-occupation'); else clearError('f-occupation');
+      if (!answers.education) setError('f-education'); else clearError('f-education');
+    }
+
+    if (step === 4) {
+      if (!answers.married) setError('f-married'); else clearError('f-married');
+      if (answers.married && answers.married !== 'no' && !answers.children) setError('f-children'); else clearError('f-children');
+      if (!answers.girlchild) setError('f-girlchild'); else clearError('f-girlchild');
+      if (!answers.pregnant) setError('f-pregnant'); else clearError('f-pregnant');
+      if (!answers.senior) setError('f-senior'); else clearError('f-senior');
     }
 
     return valid;

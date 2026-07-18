@@ -489,6 +489,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="tricolor"></div>
@@ -517,6 +518,8 @@
 
 <!-- FORM STEPS -->
 <main id="formMain">
+
+  <!-- STEP 1: Personal Profile -->
 
   <!-- STEP 1: Personal Profile -->
   <div class="step-panel active" id="step1">
@@ -551,21 +554,19 @@
 
     <div class="field" id="f-state">
       <label>राज्य <span class="required">*</span></label>
-      <div class="select-wrap">
-        <select id="state">
-          <option value="">— राज्य चुनें —</option>
-          <option>उत्तर प्रदेश</option><option>महाराष्ट्र</option><option>बिहार</option>
-          <option>मध्य प्रदेश</option><option>राजस्थान</option><option>पश्चिम बंगाल</option>
-          <option>तमिलनाडु</option><option>कर्नाटक</option><option>गुजरात</option>
-          <option>आंध्र प्रदेश</option><option>तेलंगाना</option><option>ओडिशा</option>
-          <option>केरल</option><option>झारखंड</option><option>असम</option>
-          <option>पंजाब</option><option>छत्तीसगढ़</option><option>हरियाणा</option>
-          <option>उत्तराखंड</option><option>हिमाचल प्रदेश</option><option>जम्मू और कश्मीर</option>
-          <option>त्रिपुरा</option><option>मेघालय</option><option>मणिपुर</option>
-          <option>नागालैंड</option><option>गोवा</option><option>अरुणाचल प्रदेश</option>
-          <option>मिज़ोरम</option><option>सिक्किम</option><option>दिल्ली</option>
-        </select>
-      </div>
+      <select id="state">
+        <option value="">— राज्य चुनें —</option>
+        <option>उत्तर प्रदेश</option><option>महाराष्ट्र</option><option>बिहार</option>
+        <option>मध्य प्रदेश</option><option>राजस्थान</option><option>पश्चिम बंगाल</option>
+        <option>तमिलनाडु</option><option>कर्नाटक</option><option>गुजरात</option>
+        <option>आंध्र प्रदेश</option><option>तेलंगाना</option><option>ओडिशा</option>
+        <option>केरल</option><option>झारखंड</option><option>असम</option>
+        <option>पंजाब</option><option>छत्तीसगढ़</option><option>हरियाणा</option>
+        <option>उत्तराखंड</option><option>हिमाचल प्रदेश</option><option>जम्मू और कश्मीर</option>
+        <option>त्रिपुरा</option><option>मेघालय</option><option>मणिपुर</option>
+        <option>नागालैंड</option><option>गोवा</option><option>अरुणाचल प्रदेश</option>
+        <option>मिज़ोरम</option><option>सिक्किम</option><option>दिल्ली</option>
+      </select>
       <div class="error-msg">कृपया अपना राज्य चुनें।</div>
     </div>
 
@@ -608,15 +609,15 @@
     </div>
   </div>
 
-  <!-- STEP 2: Economic Profile -->
+  <!-- STEP 2: Income & Ration -->
   <div class="step-panel" id="step2">
     <div class="step-icon">💰</div>
-    <h2 class="step-heading">आर्थिक जानकारी</h2>
-    <p class="step-subheading">आपकी आय और आर्थिक स्थिति के आधार पर योजनाएं मिलती हैं।</p>
+    <h2 class="step-heading">आय और राशन कार्ड</h2>
+    <p class="step-subheading">आपकी आय के आधार पर योजनाएं तय होती हैं।</p>
 
     <div class="field" id="f-income">
       <label>परिवार की मासिक आय (₹) <span class="required">*</span></label>
-      <div class="option-grid cols-1">
+      <div class="option-grid">
         <div class="opt-card" data-field="income" data-value="0-5000">
           <div class="opt-label">₹5,000 से कम</div>
         </div>
@@ -639,13 +640,13 @@
     <div class="field" id="f-bpl">
       <label>क्या आपके पास BPL कार्ड है? <span class="required">*</span></label>
       <div class="option-grid">
-        <div class="opt-card" data-field="bpl" data-value="no">
-          <span class="opt-icon">❌</span>
-          <div class="opt-label">नहीं</div>
-        </div>
         <div class="opt-card" data-field="bpl" data-value="yes">
           <span class="opt-icon">✅</span>
           <div class="opt-label">हाँ</div>
+        </div>
+        <div class="opt-card" data-field="bpl" data-value="no">
+          <span class="opt-icon">❌</span>
+          <div class="opt-label">नहीं</div>
         </div>
       </div>
       <div class="error-msg">कृपया चुनें कि आपके पास BPL कार्ड है या नहीं।</div>
@@ -673,86 +674,13 @@
       </div>
       <div class="error-msg">कृपया राशन कार्ड का प्रकार चुनें।</div>
     </div>
-
-    <div class="field" id="f-land">
-      <label>क्या आपके पास खेती की ज़मीन है? <span class="required">*</span></label>
-      <div class="option-grid">
-        <div class="opt-card" data-field="land" data-value="no">
-          <span class="opt-icon">🏙️</span>
-          <div class="opt-label">नहीं</div>
-        </div>
-        <div class="opt-card" data-field="land" data-value="yes-small">
-          <span class="opt-icon">🌱</span>
-          <div class="opt-label">हाँ (2 हे. से कम)</div>
-        </div>
-        <div class="opt-card" data-field="land" data-value="yes-large">
-          <span class="opt-icon">🌾</span>
-          <div class="opt-label">हाँ (2 हे. से अधिक)</div>
-        </div>
-      </div>
-      <div class="error-msg">कृपया चुनें कि आपके पास ज़मीन है या नहीं।</div>
-    </div>
-
-    <div class="field" id="f-bank">
-      <label>क्या आपका बैंक खाता है?</label>
-      <div class="option-grid">
-        <div class="opt-card" data-field="bank" data-value="no">
-          <span class="opt-icon">❌</span>
-          <div class="opt-label">नहीं</div>
-        </div>
-        <div class="opt-card" data-field="bank" data-value="yes">
-          <span class="opt-icon">🏦</span>
-          <div class="opt-label">हाँ</div>
-        </div>
-      </div>
-      <div class="error-msg">कृपया चुनें कि आपका बैंक खाता है या नहीं।</div>
-    </div>
   </div>
 
-  <!-- STEP 3: Occupation & Education -->
+  <!-- STEP 3: Land, Bank, Occupation, Education -->
   <div class="step-panel" id="step3">
     <div class="step-icon">💼</div>
     <h2 class="step-heading">व्यवसाय और शिक्षा</h2>
     <p class="step-subheading">आपके काम और पढ़ाई के आधार पर कई योजनाएं मिलती हैं।</p>
-
-    <div class="field" id="f-occupation">
-      <label>आपका मुख्य व्यवसाय <span class="required">*</span></label>
-      <div class="option-grid">
-        <div class="opt-card" data-field="occupation" data-value="farmer">
-          <span class="opt-icon">🌾</span>
-          <div class="opt-label">किसान</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="student">
-          <span class="opt-icon">📚</span>
-          <div class="opt-label">छात्र/छात्रा</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="daily-wage">
-          <span class="opt-icon">🔨</span>
-          <div class="opt-label">दिहाड़ी मज़दूर</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="self-employed">
-          <span class="opt-icon">🏪</span>
-          <div class="opt-label">स्व-रोज़गार</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="unemployed">
-          <span class="opt-icon">🔍</span>
-          <div class="opt-label">बेरोज़गार</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="govt">
-          <span class="opt-icon">🏛️</span>
-          <div class="opt-label">सरकारी कर्मचारी</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="private">
-          <span class="opt-icon">💼</span>
-          <div class="opt-label">निजी नौकरी</div>
-        </div>
-        <div class="opt-card" data-field="occupation" data-value="artisan">
-          <span class="opt-icon">🪡</span>
-          <div class="opt-label">कारीगर/शिल्पकार</div>
-        </div>
-      </div>
-      <div class="error-msg">कृपया व्यवसाय चुनें।</div>
-    </div>
 
     <div class="field" id="f-land">
       <label>क्या आपके पास खेती की ज़मीन है? <span class="required">*</span></label>
@@ -788,8 +716,47 @@
       <div class="error-msg">कृपया चुनें कि आपका बैंक खाता है या नहीं।</div>
     </div>
 
+    <div class="field" id="f-occupation">
+      <label>आपका मुख्य व्यवसाय <span class="required">*</span></label>
+      <div class="option-grid">
+        <div class="opt-card" data-field="occupation" data-value="farmer">
+          <span class="opt-icon">🌾</span>
+          <div class="opt-label">किसान</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="student">
+          <span class="opt-icon">📚</span>
+          <div class="opt-label">छात्र/छात्रा</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="daily-wage">
+          <span class="opt-icon">🔨</span>
+          <div class="opt-label">दिहाड़ी मज़दूर</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="self-employed">
+          <span class="opt-icon">🏪</span>
+          <div class="opt-label">स्व-रोज़गार</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="unemployed">
+          <span class="opt-icon">🔍</span>
+          <div class="opt-label">बेरोज़गार</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="govt">
+          <span class="opt-icon">🏛️</span>
+          <div class="opt-label">सरकारी कर्मचारी</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="private">
+          <span class="opt-icon">💼</span>
+          <div class="opt-label">निजी नौकरी</div>
+        </div>
+        <div class="opt-card" data-field="occupation" data-value="artisan">
+          <span class="opt-icon">🧵</span>
+          <div class="opt-label">कारीगर/शिल्पकार</div>
+        </div>
+      </div>
+      <div class="error-msg">कृपया व्यवसाय चुनें।</div>
+    </div>
+
     <div class="field" id="f-education">
-      <label>सबसे अधिक शिक्षा</label>
+      <label>सबसे अधिक शिक्षा <span class="required">*</span></label>
       <div class="option-grid">
         <div class="opt-card" data-field="education" data-value="illiterate">
           <span class="opt-icon">📖</span>
@@ -800,7 +767,7 @@
           <div class="opt-label">प्राथमिक (1-5)</div>
         </div>
         <div class="opt-card" data-field="education" data-value="middle">
-          <span class="opt-icon">📝</span>
+          <span class="opt-icon">🏫</span>
           <div class="opt-label">माध्यमिक (6-10)</div>
         </div>
         <div class="opt-card" data-field="education" data-value="higher-sec">
@@ -808,11 +775,11 @@
           <div class="opt-label">12वीं पास</div>
         </div>
         <div class="opt-card" data-field="education" data-value="graduate">
-          <span class="opt-icon">🏆</span>
+          <span class="opt-icon">🎓</span>
           <div class="opt-label">स्नातक (Grad)</div>
         </div>
         <div class="opt-card" data-field="education" data-value="postgrad">
-          <span class="opt-icon">⭐</span>
+          <span class="opt-icon">🎓</span>
           <div class="opt-label">स्नातकोत्तर+</div>
         </div>
       </div>
@@ -820,14 +787,14 @@
     </div>
   </div>
 
-  <!-- STEP 4: Family Profile -->
+  <!-- STEP 4: Family Details -->
   <div class="step-panel" id="step4">
-    <div class="step-icon">👨‍👩‍👧‍👦</div>
-    <h2 class="step-heading">परिवार की जानकारी</h2>
-    <p class="step-subheading">परिवार की स्थिति से कई महत्वपूर्ण योजनाएं मिलती हैं।</p>
+    <div class="step-icon">👪</div>
+    <h2 class="step-heading">पारिवारिक जानकारी</h2>
+    <p class="step-subheading">महिला व बाल कल्याण योजनाओं के लिए ज़रूरी।</p>
 
     <div class="field" id="f-married">
-      <label>वैवाहिक स्थिति</label>
+      <label>वैवाहिक स्थिति <span class="required">*</span></label>
       <div class="option-grid">
         <div class="opt-card" data-field="married" data-value="no">
           <span class="opt-icon">👤</span>
@@ -846,8 +813,8 @@
     </div>
 
     <div class="field" id="f-children">
-      <label>बच्चों की संख्या</label>
-      <div class="option-grid cols-3">
+      <label>बच्चों की संख्या <span class="required">*</span></label>
+      <div class="option-grid">
         <div class="opt-card" data-field="children" data-value="0">
           <span class="opt-icon">0️⃣</span>
           <div class="opt-label">कोई नहीं</div>
@@ -869,7 +836,7 @@
     </div>
 
     <div class="field" id="f-girlchild">
-      <label>क्या परिवार में 10 वर्ष से कम उम्र की बेटी है?</label>
+      <label>क्या परिवार में 10 वर्ष से कम उम्र की बेटी है? <span class="required">*</span></label>
       <div class="option-grid">
         <div class="opt-card" data-field="girlchild" data-value="no">
           <span class="opt-icon">❌</span>
@@ -884,7 +851,7 @@
     </div>
 
     <div class="field" id="f-pregnant">
-      <label>क्या परिवार में कोई गर्भवती महिला है?</label>
+      <label>क्या परिवार में कोई गर्भवती महिला है? <span class="required">*</span></label>
       <div class="option-grid">
         <div class="opt-card" data-field="pregnant" data-value="no">
           <span class="opt-icon">❌</span>
@@ -899,7 +866,7 @@
     </div>
 
     <div class="field" id="f-senior">
-      <label>क्या परिवार में 60+ वर्ष के बुज़ुर्ग हैं?</label>
+      <label>क्या परिवार में 60+ वर्ष के बुज़ुर्ग हैं? <span class="required">*</span></label>
       <div class="option-grid">
         <div class="opt-card" data-field="senior" data-value="no">
           <span class="opt-icon">❌</span>
@@ -913,6 +880,7 @@
       <div class="error-msg">कृपया चुनें कि आप वरिष्ठ नागरिक हैं या नहीं।</div>
     </div>
   </div>
+
 
 </main>
 
@@ -932,14 +900,9 @@
   <div class="results-body" id="resultsBody"></div>
 </div>
 
-<script>
-  // ── STATE ──
-  const answers = {};
-  let currentStep = 1;
-  const TOTAL_STEPS = 4;
 
-  // ── SCHEMES DATABASE ──
-  const schemes = [
+<script>
+const schemes = [
     {
       name: "प्रधानमंत्री किसान सम्मान निधि (PM-KISAN)",
       emoji: "🌾",
@@ -1613,9 +1576,124 @@
     },
   ];
 
-  // ── AUTO SELECT STATE / OCCUPATION / GENDER FROM URL PARAMETER ──
+  // ── STATE ──
+  const answers = {};
+  let currentStep = 1;
+  const TOTAL_STEPS = 4;
+
+  // Single source of truth: every opt-card field required per step, except 'children' (conditional).
+  // If a field is ever added or removed from a step's HTML, update this list too — this is the
+  // ONLY place that decides what's required, so validation can't silently drift from the form again.
+  const STEP_FIELDS = {
+    1: ['gender', 'category', 'disability'],
+    2: ['income', 'bpl', 'ration'],
+    3: ['land', 'bank', 'occupation', 'education'],
+    4: ['married', 'girlchild', 'pregnant', 'senior']
+  };
+
+  function setError(fieldId) {
+    const el = document.getElementById(fieldId);
+    if (el) el.classList.add('has-error');
+  }
+  function clearError(fieldId) {
+    const el = document.getElementById(fieldId);
+    if (el) el.classList.remove('has-error');
+  }
+
+  // ── OPT CARD SELECTION ──
+  document.querySelectorAll('.opt-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const field = card.dataset.field;
+      document.querySelectorAll(`.opt-card[data-field="${field}"]`).forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      answers[field] = card.dataset.value;
+      clearError('f-' + field);
+      if (field === 'married') updateFamilyFieldsVisibility();
+    });
+  });
+
+  // ── CONDITIONAL FIELDS ──
+  function updateFamilyFieldsVisibility() {
+    const childrenField = document.getElementById('f-children');
+    if (!childrenField) return;
+    if (answers.married === 'no') {
+      childrenField.style.display = 'none';
+      delete answers.children;
+      document.querySelectorAll('.opt-card[data-field="children"]').forEach(c => c.classList.remove('selected'));
+      clearError('f-children');
+    } else {
+      childrenField.style.display = '';
+    }
+  }
+
+  // ── VALIDATION (data-driven — see STEP_FIELDS above) ──
+  function validateStep(step) {
+    let valid = true;
+
+    if (step === 1) {
+      const age = parseInt(document.getElementById('age').value);
+      if (!age || age < 1 || age > 100) { setError('f-age'); valid = false; }
+      else { answers.age = age; clearError('f-age'); }
+
+      const stateVal = document.getElementById('state').value;
+      if (!stateVal) { setError('f-state'); valid = false; }
+      else { answers.state = stateVal; clearError('f-state'); }
+    }
+
+    (STEP_FIELDS[step] || []).forEach(field => {
+      if (!answers[field]) { setError('f-' + field); valid = false; }
+      else { clearError('f-' + field); }
+    });
+
+    if (step === 4) {
+      const childrenField = document.getElementById('f-children');
+      const childrenVisible = childrenField && childrenField.style.display !== 'none';
+      if (childrenVisible && !answers.children) { setError('f-children'); valid = false; }
+      else { clearError('f-children'); }
+    }
+
+    return valid;
+  }
+
+  // ── STEP NAVIGATION ──
+  function goToStep(n) {
+    document.getElementById('step' + currentStep).classList.remove('active');
+    currentStep = n;
+    document.getElementById('step' + currentStep).classList.add('active');
+
+    const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('stepLabel').textContent = 'चरण ' + currentStep + ' / ' + TOTAL_STEPS;
+    document.getElementById('stepPct').textContent = pct + '%';
+
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
+      const dot = document.getElementById('dot' + i);
+      if (dot) dot.className = 'dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
+    }
+
+    document.getElementById('btnBack').style.display = currentStep > 1 ? 'block' : 'none';
+    document.getElementById('btnNext').textContent = currentStep === TOTAL_STEPS ? 'परिणाम देखें ✓' : 'आगे बढ़ें →';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('btnNext').addEventListener('click', () => {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < TOTAL_STEPS) {
+      goToStep(currentStep + 1);
+    } else {
+      showResults();
+    }
+  });
+
+  document.getElementById('btnBack').addEventListener('click', () => {
+    if (currentStep > 1) goToStep(currentStep - 1);
+  });
+
+  // ── AUTO SELECT STATE / OCCUPATION / GENDER / SENIOR FROM URL PARAMETER ──
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
+
     const stateParam = params.get('state');
     if (stateParam) {
       const stateSelect = document.getElementById('state');
@@ -1640,120 +1718,7 @@
     });
   });
 
-  // ── OPT CARD SELECTION ──
-  document.querySelectorAll('.opt-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const field = card.dataset.field;
-      document.querySelectorAll(`.opt-card[data-field="${field}"]`).forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      answers[field] = card.dataset.value;
-      const fieldEl = document.getElementById('f-' + field);
-      if (fieldEl) fieldEl.classList.remove('has-error');
 
-      if (field === 'married') updateFamilyFieldsVisibility();
-    });
-  });
-
-  // ── CONDITIONAL FIELDS ──
-  // अविवाहित चुनने पर "बच्चों की संख्या" प्रश्न छुपाएं और उसका उत्तर रीसेट करें
-  function updateFamilyFieldsVisibility() {
-    const childrenField = document.getElementById('f-children');
-    if (!childrenField) return;
-    if (answers.married === 'no') {
-      childrenField.style.display = 'none';
-      delete answers.children;
-      document.querySelectorAll('.opt-card[data-field="children"]').forEach(c => c.classList.remove('selected'));
-    } else {
-      childrenField.style.display = '';
-    }
-  }
-
-  // पिछले चरण पर वापस जाने पर पहले से चुने गए विकल्प फिर से हाइलाइट करें
-  function restoreSelections(step) {
-    document.querySelectorAll('#step' + step + ' .opt-card').forEach(card => {
-      const field = card.dataset.field;
-      if (answers[field] === card.dataset.value) card.classList.add('selected');
-    });
-    if (step === 4) updateFamilyFieldsVisibility();
-  }
-
-  // ── VALIDATION ──
-  function validateStep(step) {
-    let valid = true;
-
-    const clearError = id => { const el = document.getElementById(id); if(el) el.classList.remove('has-error'); };
-    const setError   = id => { const el = document.getElementById(id); if(el) el.classList.add('has-error'); valid = false; };
-
-    if (step === 1) {
-      const age = parseInt(document.getElementById('age').value);
-      if (!age || age < 1 || age > 100) { setError('f-age'); } else { answers.age = age; clearError('f-age'); }
-      if (!answers.gender)   setError('f-gender');   else clearError('f-gender');
-      if (!document.getElementById('state').value) { setError('f-state'); } else { answers.state = document.getElementById('state').value; clearError('f-state'); }
-      if (!answers.category) setError('f-category'); else clearError('f-category');
-      if (!answers.disability) setError('f-disability'); else clearError('f-disability');
-    }
-
-    if (step === 2) {
-      if (!answers.income) setError('f-income'); else clearError('f-income');
-      if (!answers.bpl) setError('f-bpl'); else clearError('f-bpl');
-      if (!answers.ration) setError('f-ration'); else clearError('f-ration');
-    }
-
-    if (step === 3) {
-      if (!answers.land) setError('f-land'); else clearError('f-land');
-      if (!answers.bank) setError('f-bank'); else clearError('f-bank');
-      if (!answers.occupation) setError('f-occupation'); else clearError('f-occupation');
-      if (!answers.education) setError('f-education'); else clearError('f-education');
-    }
-
-    if (step === 4) {
-      if (!answers.married) setError('f-married'); else clearError('f-married');
-      if (answers.married && answers.married !== 'no' && !answers.children) setError('f-children'); else clearError('f-children');
-      if (!answers.girlchild) setError('f-girlchild'); else clearError('f-girlchild');
-      if (!answers.pregnant) setError('f-pregnant'); else clearError('f-pregnant');
-      if (!answers.senior) setError('f-senior'); else clearError('f-senior');
-    }
-
-    return valid;
-  }
-
-  // ── NAVIGATION ──
-  function goToStep(n) {
-    document.getElementById('step' + currentStep).classList.remove('active');
-    currentStep = n;
-    document.getElementById('step' + currentStep).classList.add('active');
-    restoreSelections(currentStep);
-
-    const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('stepLabel').textContent = 'चरण ' + currentStep + ' / ' + TOTAL_STEPS;
-    document.getElementById('stepPct').textContent = pct + '%';
-
-    for (let i = 1; i <= TOTAL_STEPS; i++) {
-      const dot = document.getElementById('dot' + i);
-      dot.className = 'dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
-    }
-
-    document.getElementById('btnBack').style.display = currentStep > 1 ? 'block' : 'none';
-    document.getElementById('btnNext').textContent = currentStep === TOTAL_STEPS ? 'परिणाम देखें ✓' : 'आगे बढ़ें →';
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  document.getElementById('btnNext').addEventListener('click', () => {
-    if (!validateStep(currentStep)) return;
-    if (currentStep < TOTAL_STEPS) {
-      goToStep(currentStep + 1);
-    } else {
-      showResults();
-    }
-  });
-
-  document.getElementById('btnBack').addEventListener('click', () => {
-    if (currentStep > 1) goToStep(currentStep - 1);
-  });
-
-  // ── RESULTS ──
   function showResults() {
     const matched = schemes.filter(s => { try { return s.check(answers); } catch(e) { return false; } });
 

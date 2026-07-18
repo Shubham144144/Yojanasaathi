@@ -1581,7 +1581,7 @@
       }
     }
 
-    ['occupation', 'gender'].forEach(field => {
+    ['occupation', 'gender', 'senior'].forEach(field => {
       const val = params.get(field);
       if (!val) return;
       const card = document.querySelector(`.opt-card[data-field="${field}"][data-value="${val}"]`);

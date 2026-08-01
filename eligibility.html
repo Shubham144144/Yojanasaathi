@@ -1576,6 +1576,46 @@ const schemes = [
       check: a => a.state === 'पंजाब' && a.disability === 'yes',
       category: "♿ दिव्यांग कल्याण योजनाएं"
     },
+    {
+      name: "पुण्यश्लोक अहिल्यादेवी होळकर कर्जमुक्ती योजना",
+      emoji: "💳",
+      ministry: "महाराष्ट्र सरकार — नई (2026)",
+      benefit: "₹2 लाख तक फसल ऋण माफ़ी (30 सितंबर 2025 तक बकाया) + ₹50,000 प्रोत्साहन राशि नियमित भुगतान करने वालों को",
+      difficulty: "मध्यम",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && a.occupation === 'farmer',
+      category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "मेरी रसोई योजना (Punjab)",
+      emoji: "🍲",
+      ministry: "पंजाब सरकार — नई (2026)",
+      benefit: "नीले राशन कार्ड (NFSA) परिवारों को हर तिमाही मुफ़्त खाद्य किट",
+      difficulty: "आसान",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && ['aay','phh','nphh'].includes(a.ration),
+      category: "🍲 खाद्य सुरक्षा योजनाएं"
+    },
+    {
+      name: "घर घर रोज़गार एवं कारोबार मिशन (PGRKAM)",
+      emoji: "💼",
+      ministry: "पंजाब सरकार",
+      benefit: "बेरोज़गार युवाओं को मुफ़्त नौकरी काउंसलिंग, स्किल ट्रेनिंग व प्लेसमेंट सहायता",
+      difficulty: "आसान",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && a.occupation === 'unemployed',
+      category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
+    },
+    {
+      name: "दिल्ली लक्ष्मी योजना",
+      emoji: "👩",
+      ministry: "दिल्ली सरकार — नई (2026)",
+      benefit: "₹2,500 प्रति माह (₹30,000 सालाना) — पात्र महिलाओं को सीधे बैंक खाते में",
+      difficulty: "मध्यम",
+      url: "eligibility.html",
+      check: a => a.state === 'दिल्ली' && a.gender === 'female' && parseInt(a.age) >= 21 && parseInt(a.age) <= 60 && ['0-5000','5000-10000','10000-25000'].includes(a.income),
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
   ];
 
   // ── STATE ──

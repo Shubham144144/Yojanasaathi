@@ -516,7 +516,7 @@
 
 <header>
   <a href="index.html" class="back-btn">←</a>
-  <div class="header-title">पात्रता जांचें</div>
+  <h1 class="header-title">पात्रता जांचें</h1>
 </header>
 
 <!-- PROGRESS -->
@@ -914,8 +914,11 @@
 <div class="results-wrap" id="resultsWrap">
   <div class="results-hero">
     <div class="results-count" id="resultsCount">0</div>
-    <div class="results-title">योजनाएं मिलीं आपके लिए</div>
-    <div class="results-sub">नीचे देखें और आवेदन करें</div>
+    <div class="results-title">संभावित योजनाएं मिलीं आपके लिए</div>
+    <div class="results-sub">नीचे देखें और विवरण जानें</div>
+  </div>
+  <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:12px;padding:14px 16px;margin:0 20px 16px;font-family:'Tiro Devanagari Hindi',serif;font-size:13px;line-height:1.6;color:#5D4A00;">
+    🟡 <strong>नोट:</strong> यह परिणाम आपके द्वारा दी गई जानकारी और उपलब्ध योजना-नियमों के आधार पर एक प्रारंभिक मार्गदर्शन है। अंतिम पात्रता संबंधित सरकारी विभाग/पोर्टल द्वारा सत्यापित की जाती है।
   </div>
   <div class="results-body" id="resultsBody"></div>
 </div>
@@ -1824,10 +1827,11 @@ const schemes = [
                 <div class="scheme-ministry">${s.ministry}</div>
               </div>
             </div>
+            <div style="display:inline-block;background:#E8F5E9;color:#138808;font-family:'Tiro Devanagari Hindi',serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;margin-bottom:8px;">🟢 संभावित रूप से पात्र</div>
             <div class="scheme-benefit">✅ ${s.benefit}</div>
             <div class="scheme-footer">
               <div class="difficulty">आवेदन: ${s.difficulty}</div>
-              <a href="${s.url}" target="_blank" rel="noopener" class="apply-btn">आवेदन करें →</a>
+              <a href="${s.url}" target="_blank" rel="noopener" class="apply-btn">विवरण देखें →</a>
             </div>`;
           group.appendChild(card);
         });
@@ -1839,7 +1843,7 @@ const schemes = [
     // WhatsApp share
     const schemeNames = matched.map(s => `• ${s.name}`).join('\n');
     const whatsappText = encodeURIComponent(
-      `🇮🇳 *योजना साथी* पर मुझे ${matched.length} सरकारी योजनाएं मिलीं जिनके लिए मैं पात्र हूँ:\n\n${schemeNames}\n\n✅ आप भी अपनी योजनाएं जांचें (मुफ़्त):\nhttps://shubham144144.github.io/Yojanasaathi/`
+      `🇮🇳 *योजना साथी* पर मुझे ${matched.length} सरकारी योजनाएं मिलीं जिनके लिए मैं संभावित रूप से पात्र हो सकता/सकती हूँ:\n\n${schemeNames}\n\n✅ आप भी अपनी योजनाएं जांचें (मुफ़्त):\nhttps://yojanasathee.in.net/eligibility.html`
     );
 
     // After apply guide
@@ -1853,11 +1857,11 @@ const schemes = [
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="background:rgba(255,255,255,0.2);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</span>
-            <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:14px;opacity:0.9;">30 दिन बाद आधिकारिक पोर्टल पर स्टेटस जांचें</span>
+            <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:14px;opacity:0.9;">आवेदन के बाद संबंधित योजना के आधिकारिक पोर्टल पर उपलब्ध status/track विकल्प से स्थिति जांचें। यदि योजना द्वारा कोई समयसीमा दी गई है, तो उसी के अनुसार follow-up करें</span>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="background:rgba(255,255,255,0.2);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">3</span>
-            <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:14px;opacity:0.9;">बैंक खाता आधार से लिंक रहे — DBT के लिए ज़रूरी</span>
+            <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:14px;opacity:0.9;">DBT/योजना भुगतान के लिए बैंक और आधार संबंधी आवश्यकताएं योजना अनुसार अलग हो सकती हैं — संबंधित आधिकारिक निर्देश जांचें</span>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="background:rgba(255,255,255,0.2);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">4</span>
@@ -1873,7 +1877,7 @@ const schemes = [
       </a>
 
       <button class="recheck-btn" onclick="location.reload()">🔄 दोबारा जांचें</button>
-      <div class="privacy-note">🔒 आपकी कोई भी जानकारी हमारे पास सेव नहीं हुई।<br>सभी परिणाम आपके डिवाइस पर ही दिखाए गए हैं।</div>
+      <div class="privacy-note">🔒 पात्रता जांच फॉर्म में दर्ज जानकारी हमारे सर्वर पर भेजकर सेव नहीं की जाती।<br>सभी परिणाम आपके डिवाइस पर ही दिखाए गए हैं।</div>
     `);
   }
 </script>

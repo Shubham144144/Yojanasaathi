@@ -934,6 +934,7 @@ const schemes = [
       difficulty: "आसान",
       url: "pm-kisan-samman-nidhi-yojana.html",
       check: a => a.occupation === 'farmer' && (a.land === 'yes-small' || a.land === 'yes-large') && a.bank === 'yes',
+      note: "PM-KISAN में कुछ श्रेणियां पात्रता से बाहर हो सकती हैं। अंतिम पात्रता आधिकारिक पोर्टल पर सत्यापित करें।",
       category: "🌾 किसान योजनाएं"
     },
     {
@@ -954,6 +955,7 @@ const schemes = [
       difficulty: "मध्यम",
       url: "pm-awas-yojana.html",
       check: a => ['0-5000','5000-10000'].includes(a.income) && (a.bpl === 'yes' || ['aay','phh'].includes(a.ration)),
+      note: "संभावित योजना — PMAY-G की अतिरिक्त पात्रता शर्तों का आधिकारिक सत्यापन आवश्यक है।",
       category: "🏠 आवास योजनाएं"
     },
     {
@@ -994,6 +996,7 @@ const schemes = [
       difficulty: "आसान",
       url: "ujjwala-yojana.html",
       check: a => (a.bpl === 'yes' || ['aay','phh'].includes(a.ration)) && a.gender === 'female',
+      note: "यह प्रारंभिक मिलान है। घरेलू LPG कनेक्शन और PMUY की अन्य पात्रता शर्तों का सत्यापन आधिकारिक पोर्टल पर करें।",
       category: "👩 महिला एवं बाल योजनाएं"
     },
     {
@@ -1060,7 +1063,7 @@ const schemes = [
       name: "e-SHRAM कार्ड योजना",
       emoji: "🪪",
       ministry: "श्रम मंत्रालय",
-      benefit: "₹2 लाख दुर्घटना बीमा + सरकारी योजनाओं तक आसान पहुँच",
+      benefit: "सामाजिक सुरक्षा योजनाओं तक आसान पहुँच (दुर्घटना बीमा जैसे लाभ संबंधित योजना की पात्रता व शर्तों के अनुसार)",
       difficulty: "बहुत आसान",
       url: "eshram-card-yojana.html",
       check: a => ['daily-wage','farmer','self-employed','artisan'].includes(a.occupation),
@@ -1070,10 +1073,11 @@ const schemes = [
       name: "नेशनल स्कॉलरशिप पोर्टल (NSP)",
       emoji: "📚",
       ministry: "शिक्षा मंत्रालय",
-      benefit: "SC/ST/OBC/अल्पसंख्यक छात्रों के लिए ₹1,000–25,000 तक छात्रवृत्ति",
+      benefit: "विभिन्न पात्र छात्र वर्गों के लिए छात्रवृत्ति — योजना/श्रेणी के अनुसार राशि और पात्रता अलग हो सकती है",
       difficulty: "मध्यम",
       url: "national-scholarship-portal.html",
       check: a => a.occupation === 'student' && ['sc','st','obc'].includes(a.category),
+      note: "यह मिलान वर्तमान में SC/ST/OBC श्रेणी पर आधारित है। NSP पर अल्पसंख्यक व अन्य छात्रवृत्तियां भी उपलब्ध हैं — पूरी सूची आधिकारिक पोर्टल पर देखें।",
       category: "📚 शिक्षा योजनाएं"
     },
     {
@@ -1124,6 +1128,7 @@ const schemes = [
       difficulty: "आसान",
       url: "mgnrega.html",
       check: a => ['daily-wage','farmer','unemployed'].includes(a.occupation) && ['0-5000','5000-10000','10000-25000'].includes(a.income),
+      note: "MGNREGA ग्रामीण परिवार, जॉब कार्ड और काम-की-मांग पर आधारित है, केवल आय पर नहीं — पूरी शर्तें आधिकारिक पोर्टल पर देखें।",
       category: "💼 रोज़गार एवं व्यवसाय योजनाएं"
     },
     // ── STATE SPECIFIC SCHEMES ──
@@ -1829,8 +1834,9 @@ const schemes = [
             </div>
             <div style="display:inline-block;background:#E8F5E9;color:#138808;font-family:'Tiro Devanagari Hindi',serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;margin-bottom:8px;">🟢 संभावित रूप से पात्र</div>
             <div class="scheme-benefit">✅ ${s.benefit}</div>
+            ${s.note ? `<div style="font-family:'Tiro Devanagari Hindi',serif;font-size:12.5px;color:#6B5D00;background:#FFFBEA;border-left:3px solid #F2C200;padding:6px 10px;border-radius:6px;margin:6px 0;">ℹ️ ${s.note}</div>` : ''}
             <div class="scheme-footer">
-              <div class="difficulty">आवेदन: ${s.difficulty}</div>
+              <div class="difficulty">प्रक्रिया: ${s.difficulty}</div>
               <a href="${s.url}" target="_blank" rel="noopener" class="apply-btn">विवरण देखें →</a>
             </div>`;
           group.appendChild(card);

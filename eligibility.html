@@ -979,7 +979,7 @@ const schemes = [
       name: "उज्ज्वला योजना (PMUY)",
       emoji: "🔥",
       ministry: "पेट्रोलियम मंत्रालय",
-      benefit: "मुफ़्त LPG गैस कनेक्शन — BPL परिवारों के लिए",
+      benefit: "मुफ़्त LPG गैस कनेक्शन — BPL परिवारों के लिए (साल के पहले 4 रिफिल पर ₹300 प्रति सिलेंडर सब्सिडी)",
       difficulty: "आसान",
       url: "ujjwala-yojana.html",
       check: a => (a.bpl === 'yes' || ['aay','phh'].includes(a.ration)) && a.gender === 'female',
@@ -1160,7 +1160,7 @@ const schemes = [
       name: "लाडली बहना योजना (MP)",
       emoji: "👩",
       ministry: "मध्य प्रदेश सरकार",
-      benefit: "₹1,250 प्रति माह — 21-60 वर्ष की विवाहित महिलाओं को",
+      benefit: "₹1,500 प्रति माह — 21-60 वर्ष की विवाहित महिलाओं को",
       difficulty: "आसान",
       url: "madhya-pradesh-sarkari-yojana.html",
       check: a => a.state === 'मध्य प्रदेश' && a.gender === 'female' && a.married === 'yes' && parseInt(a.age) >= 21 && parseInt(a.age) <= 60,
@@ -1170,7 +1170,7 @@ const schemes = [
       name: "MP मुख्यमंत्री किसान कल्याण योजना",
       emoji: "🌾",
       ministry: "मध्य प्रदेश सरकार",
-      benefit: "PM Kisan के अलावा ₹4,000 अतिरिक्त — कुल ₹10,000/वर्ष",
+      benefit: "PM Kisan के अलावा ₹6,000 अतिरिक्त — कुल ₹12,000/वर्ष",
       difficulty: "आसान",
       url: "madhya-pradesh-sarkari-yojana.html",
       check: a => a.state === 'मध्य प्रदेश' && a.occupation === 'farmer' && (a.land === 'yes-small' || a.land === 'yes-large'),
@@ -1595,6 +1595,26 @@ const schemes = [
       url: "maharashtra-sarkari-yojana.html",
       check: a => a.state === 'महाराष्ट्र' && a.occupation === 'farmer',
       category: "🌾 किसान योजनाएं"
+    },
+    {
+      name: "महिला किसान प्रमाण पत्र (महाराष्ट्र)",
+      emoji: "👩‍🌾",
+      ministry: "महाराष्ट्र सरकार — नई (2026)",
+      benefit: "बिना 7/12 जमीन मालिकाना हक के भी किसान के रूप में कानूनी मान्यता — कृषि योजनाओं, ऋण, बीमा का लाभ",
+      difficulty: "मध्यम",
+      url: "maharashtra-sarkari-yojana.html",
+      check: a => a.state === 'महाराष्ट्र' && a.gender === 'female' && a.occupation === 'farmer',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "मुख्यमंत्री मावां-धीयां सत्कार योजना (Punjab)",
+      emoji: "👩",
+      ministry: "पंजाब सरकार — नई (2026)",
+      benefit: "₹1,000 प्रति माह (SC महिलाओं को ₹1,500) — 18+ वर्ष की पंजाब की पंजीकृत मतदाता महिलाओं को",
+      difficulty: "मध्यम",
+      url: "punjab-sarkari-yojana.html",
+      check: a => a.state === 'पंजाब' && a.gender === 'female' && parseInt(a.age) >= 18,
+      category: "👩 महिला एवं बाल योजनाएं"
     },
     {
       name: "मेरी रसोई योजना (Punjab)",

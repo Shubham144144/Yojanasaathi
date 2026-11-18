@@ -1487,13 +1487,13 @@ const schemes = [
       category: "👩 महिला एवं बाल योजनाएं"
     },
     {
-      name: "लक्ष्मी भंडार योजना (West Bengal)",
+      name: "अन्नपूर्णा भंडार योजना (West Bengal)",
       emoji: "👩",
-      ministry: "पश्चिम बंगाल सरकार",
-      benefit: "₹1,000-1,200 प्रति माह — सभी पात्र महिलाओं को",
-      difficulty: "आसान",
+      ministry: "पश्चिम बंगाल सरकार — नई (2026)",
+      benefit: "₹3,000 प्रति माह — 25 से 60 वर्ष की पात्र महिलाओं को (लक्ष्मी भंडार की जगह)",
+      difficulty: "मध्यम",
       url: "west-bengal-sarkari-yojana.html",
-      check: a => a.state === 'पश्चिम बंगाल' && a.gender === 'female' && parseInt(a.age) >= 25,
+      check: a => a.state === 'पश्चिम बंगाल' && a.gender === 'female' && parseInt(a.age) >= 25 && parseInt(a.age) <= 60,
       category: "👩 महिला एवं बाल योजनाएं"
     },
     {
@@ -1604,6 +1604,16 @@ const schemes = [
       difficulty: "मध्यम",
       url: "maharashtra-sarkari-yojana.html",
       check: a => a.state === 'महाराष्ट्र' && a.gender === 'female' && a.occupation === 'farmer',
+      category: "👩 महिला एवं बाल योजनाएं"
+    },
+    {
+      name: "दीनदयाल लाडो लक्ष्मी योजना (Haryana)",
+      emoji: "👩",
+      ministry: "हरियाणा सरकार — अपडेट (2026)",
+      benefit: "₹2,100 प्रति माह — परिवार की वार्षिक आय ₹1.80 लाख तक (पहले ₹1 लाख)",
+      difficulty: "मध्यम",
+      url: "haryana-sarkari-yojana.html",
+      check: a => a.state === 'हरियाणा' && a.gender === 'female' && parseInt(a.age) >= 18 && ['0-5000','5000-10000','10000-25000'].includes(a.income),
       category: "👩 महिला एवं बाल योजनाएं"
     },
     {
